@@ -1,6 +1,7 @@
 package com.pxc.learn.servicefeign.controller;
 
-import com.pxc.learn.fegin.SayHiFeginClient;
+
+import com.pxc.learn.eurekaclient.fegin.SayHiFeginClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;

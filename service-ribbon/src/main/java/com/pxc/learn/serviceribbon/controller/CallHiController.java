@@ -1,5 +1,6 @@
 package com.pxc.learn.serviceribbon.controller;
 
+import com.pxc.learn.serviceribbon.service.TestHystrixService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,11 +17,18 @@ public class CallHiController {
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private TestHystrixService testHystrixService;
 
     @GetMapping("/call/hi")
     public String callHi(@RequestParam("name") String name) {
 
         return restTemplate.getForObject("http://SERVICE-HI/hi?name=" + name, String.class);
+    }
 
+    @GetMapping("/test/ribbon/hystrix")
+    public String testHystrix(@RequestParam("name") String name) {
+
+        return testHystrixService.callHi(name);
     }
 }

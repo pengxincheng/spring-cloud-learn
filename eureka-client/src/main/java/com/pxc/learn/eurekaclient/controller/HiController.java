@@ -18,6 +18,10 @@ public class HiController {
     @GetMapping("hi")
     public String sayHi(@RequestParam String name) {
         log.info("name=" + name);
+        if(Math.random() > 0.5){
+            log.error("发生异常");
+            int a = 1/0;
+        }
         return "Hi " + name;
     }
 
@@ -25,6 +29,10 @@ public class HiController {
     @RequestMapping("/feign/hi")
     String sayHi2(@RequestParam("name") String name) {
         log.info("Feign hi name=" + name);
+        if(Math.random() > 0.5){
+            log.error("发生异常");
+            int a = 1/0;
+        }
         return "Hi " + name;
     }
 }
